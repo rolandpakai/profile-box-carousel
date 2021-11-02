@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Http Requests & JavaScript</title>
+    <link rel="stylesheet" href="src/app.css" />
+    <script src="src/index.js" defer></script>
+  </head>
+  <body>
+    <!-- App -->
+    <div id="App">
+      <div>
+        <button id="newProfileButton" class="btn btn-primary">
+          Add New Profile
+        </button>
+      </div>
+        <div
+          id="carouselId"
+          class="carousel carousel-dark slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner" id="carouselInnerId"></div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselId"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselId"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- UserModal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+    <!-- ConfirmModal -->
+    <div id="confirmModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete User</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete the profile?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="yesButton" class="btn btn-primary">
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
