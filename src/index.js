@@ -22,18 +22,15 @@ profileButton.addEventListener("click", () => {
     email: "",
     avatar: ""
   };
+  
   const user = new User(data);
-  showUserModal(user);
-});
-
-const showUserModal = (user) => {
   userModal.showModal(user);
-};
+});
 
 const showUserProfileModal = (e) => {
   getUserData(e.currentTarget.dataset.id).then((responseData) => {
     const user = new User(responseData.data);
-    showUserModal(user);
+    userModal.showModal(user);
   });
 };
 
