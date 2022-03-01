@@ -27,16 +27,16 @@ export default class UserCarousel {
     );
   }
 
-  addItem(user) {
-    this.items.push(user);
+  addItem(item) {
+    this.items.push(item);
   }
 
-  updateItem(user) {
-    const userCardNode = document.querySelector(
-      ".card[data-id='" + user.getId() + "']"
+  updateItem(item) {
+    const cardNode = document.querySelector(
+      ".card[data-id='" + item.getId() + "']"
     );
 
-    userCardNode.outerHTML = user.getTemplate();
+    cardNode.outerHTML = item.getTemplate();
   }
 
   removeItem(id) {
@@ -44,21 +44,21 @@ export default class UserCarousel {
       return item.id !== parseInt(id, 10);
     });
 
-    const userCardNode = document.querySelector(".card[data-id='" + id + "']");
+    const cardNode = document.querySelector(".card[data-id='" + id + "']");
 
     let activeItem = null;
 
-    if (userCardNode.parentElement.nextElementSibling) {
-      activeItem = userCardNode.parentElement.nextElementSibling;
+    if (cardNode.parentElement.nextElementSibling) {
+      activeItem = cardNode.parentElement.nextElementSibling;
     } else {
-      activeItem = userCardNode.parentElement.previousElementSibling;
+      activeItem = cardNode.parentElement.previousElementSibling;
     }
 
     activeItem.classList.add("active");
-    userCardNode.parentElement.remove();
+    cardNode.parentElement.remove();
   }
 
-  renderItem(user, active) {
+  renderItem(item, active) {
     var div = document.createElement("div");
 
     div.classList.add("carousel-item");
@@ -68,7 +68,7 @@ export default class UserCarousel {
 
     let carouselInnerElement = document.getElementById("carouselInnerId");
 
-    div.innerHTML = user.getTemplate();
+    div.innerHTML = item.getTemplate();
 
     carouselInnerElement.append(div);
   }
