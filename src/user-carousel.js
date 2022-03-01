@@ -1,42 +1,23 @@
 import { Carousel } from "bootstrap";
 
 export default class UserCarousel {
-  constructor(root) {
+  constructor(root, carouselButtonEvent) {
     this.items = [];
     this.root = root;
+	this.carouselButtonEvent = carouselButtonEvent;
     this.carousel = new Carousel(root);
   }
-
-  render(items) {
-    this.items = items;
-
-    for (let i = 0; i < items.length; i++) {
-      let active = false;
-      if (i === 0) {
-        active = true;
-      }
-      this.renderItem(items[i], active);
-    }
-  }
-
-  addProfileButtonEventListener(callback) {
-    this.root.querySelectorAll(".profile-btn").forEach((btn) =>
-      btn.addEventListener("click", (e) => {
-        callback(e);
-      })
-    );
+  
+  addButtonEventListener(container) {
+	  container.addEventListener("click", (e) => {
+	  if (e.target.classList.contains("profile-btn")) {
+		this.carouselButtonEvent(e);
+	  }
+    })
   }
 
   addItem(item) {
     this.items.push(item);
-  }
-
-  updateItem(item) {
-    const cardNode = document.querySelector(
-      ".card[data-id='" + item.getId() + "']"
-    );
-
-    cardNode.outerHTML = item.getTemplate();
   }
 
   removeItem(id) {
@@ -57,6 +38,18 @@ export default class UserCarousel {
     activeItem.classList.add("active");
     cardNode.parentElement.remove();
   }
+  
+  render(items) {
+    this.items = items;
+
+    for (let i = 0; i < items.length; i++) {
+      let active = false;
+      if (i === 0) {
+        active = true;
+      }
+      this.renderItem(items[i], active);
+    }
+  }
 
   renderItem(item, active) {
     var div = document.createElement("div");
@@ -71,6 +64,18 @@ export default class UserCarousel {
     div.innerHTML = item.getTemplate();
 
     carouselInnerElement.append(div);
+	
+	this.addButtonEventListener(div);
+  }
+  
+  updateItem(item) {
+    const itemNode = document.querySelector(
+      ".card[data-id='" + item.getId() + "']"
+    );
+
+    itemNode.outerHTML = item.getTemplate();
+	
+	this.addButtonEventListener(itemNode);
   }
 
   to(index) {
