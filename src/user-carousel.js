@@ -61,9 +61,9 @@ export default class UserCarousel {
   renderItem(user, active) {
     var div = document.createElement("div");
 
-    div.classList = "carousel-item";
+    div.classList.add("carousel-item");
     if (active) {
-      div.classList += " active";
+      div.classList.add("active");
     }
 
     let carouselInnerElement = document.getElementById("carouselInnerId");
