@@ -1,4 +1,4 @@
-# User card carousel Javascript application 
+# User Card Carousel Javascript Application 
 
 This project is about to create an editable user card in a carousel.
 This project provides the skills you need to advance your JavaScript knowledge and provides training to support your journey as a Mid Technical Engineer. 
