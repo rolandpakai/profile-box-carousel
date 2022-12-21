@@ -136,3 +136,5 @@ Tasks
 a) Create UserCarousel class
 
 b) Implement render, addItem, updateItem, removeItem, renderItem methods
+
+![User Card Carousele](/preview.png)
